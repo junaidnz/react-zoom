@@ -1,12 +1,11 @@
-import react from 'react';
+import React from 'react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import {ImageAnnotation} from "../ImageAnnotation/ImageAnnotation";
 
-export const ImageContainer = ({imgSrc}) => {
+export const ImageZoomContainer = ({imgSrc}) => {
     return (
-        <TransformWrapper
-            wheel={{wheelDisabled: true}}
-        >
-            {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
+        <TransformWrapper>
+            {({ zoomIn, zoomOut, resetTransform, zoomToElement , ...rest }) => (
                 <>
                     <div className="tools">
                         <button onClick={() => zoomIn()}>Zoom In +</button>
@@ -14,7 +13,7 @@ export const ImageContainer = ({imgSrc}) => {
                         <button onClick={() => resetTransform()}>Reset</button>
                     </div>
                     <TransformComponent>
-                        <img className="image-content" src={imgSrc} alt="imag-thumbnail" />
+                        <ImageAnnotation imgSrc={imgSrc}/>
                     </TransformComponent>
                 </>
             )}
